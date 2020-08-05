@@ -82,8 +82,8 @@ class _LinkedInAuthCodeState extends State<LinkedInAuthCode> {
             getAuthorizationCode(redirectUrl: url, clientState: clientState);
         widget.onCallBack(authCode);
       }
-    }, onError: () {
-      print("Error");
+    }, onError: (Object error) {
+      print("Error $error");
     }, onDone: () {
       print("DONE");
     });
