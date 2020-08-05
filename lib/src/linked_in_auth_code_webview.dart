@@ -71,6 +71,7 @@ class _LinkedInAuthCodeState extends State<LinkedInAuthCode> {
 
     // Add a listener to on url changed
     _onUrlChanged = flutterWebViewPlugin.onUrlChanged.listen((String url) {
+      print('URL CHANGED $url');
       if (mounted &&
           (url.startsWith(widget.redirectUrl) ||
               (widget.frontendRedirectUrl != null &&
@@ -81,6 +82,10 @@ class _LinkedInAuthCodeState extends State<LinkedInAuthCode> {
             getAuthorizationCode(redirectUrl: url, clientState: clientState);
         widget.onCallBack(authCode);
       }
+    }, onError: () {
+      print("Error");
+    }, onDone: () {
+      print("DONE");
     });
   }
 
